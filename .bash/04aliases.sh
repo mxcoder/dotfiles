@@ -23,6 +23,7 @@ alias z="screen -dRR"
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
+alias cdd="cd $DOTFILES"
 alias cdw="cd $WORKHOME"
 alias g="git"
 

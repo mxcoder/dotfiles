@@ -4,7 +4,7 @@
 export env=dev
 export ENV=dev
 
-# Make vim the default editor
+# Make nano the default editor - that's how I roll, deal with it.
 export EDITOR="nano"
 
 # Larger bash history (allow 32³ entries; default is 500)
