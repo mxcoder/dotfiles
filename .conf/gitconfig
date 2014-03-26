@@ -1,0 +1,35 @@
+[core]
+    editor = nano
+
+[alias]
+    co = checkout
+    ci = commit
+    ca = commit
+    st = status -sb
+    br = branch
+    df = diff --color -w
+    al = add .
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
+
+[merge]
+    log = true
+
+[push]
+    default = simple
+
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan

@@ -1,0 +1,12 @@
+#!/bin/bash
+# https://github.com/blha303/puush-linux/
+
+if [ -z "$PUUSH_API_KEY" ]; then
+  echo "Set the variable PUUSH_API_KEY"
+  exit
+elif ! [ -r "$1" ]; then
+  echo "Specify a file to be uploaded"
+  exit
+fi
+
+curl "https://puush.me/api/up" -# -F "k=$PUUSH_API_KEY" -F "z=poop" -F "f=@$1" | sed -E 's/^.+,(.+),.+,.+$/\1\n/'
