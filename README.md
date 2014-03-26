@@ -2,7 +2,5 @@ My Setup
 ========
 
 - Clone
-- Edit own .profile or .bash_rc
-- set $DOTFILES to the cloned folder
-- Add
-`[ -n "$PS1" ] && source $DOTFILES/.bash_profile`
+- Add proper entry file to .profile and/or .bash_rc
+- Reload

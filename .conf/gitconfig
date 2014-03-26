@@ -4,7 +4,7 @@
 [alias]
     co = checkout
     ci = commit
-    ca = commit
+    ca = commit -a
     st = status -sb
     br = branch
     df = diff --color -w

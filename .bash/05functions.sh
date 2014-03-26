@@ -1,5 +1,14 @@
 ## Common functions
 
+veditor() {
+    if type subl > /dev/null 2>&1; then
+        subl $1 &
+    else
+        gedit $1 &
+    fi
+}
+export -f veditor
+
 # To system-wide clipboard
 # http://madebynathan.com/2011/10/04/a-nicer-way-to-use-xclip/
 # # A shortcut function that simplifies usage of xclip.

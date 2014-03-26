@@ -1,11 +1,57 @@
 startup_message off
+shell bash
+nonblock on
 vbell off
-escape /
 defscrollback 5000
-# backtick 1 60 60 $HOME/.screenrc.acpi  # .screenrc.acpi contains 1 line: acpi | awk -F ', ' '{print $2}'
 hardstatus alwayslastline
 hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-=%D %m/%d/%y | %C:%s %A | %1`%{-}'
-screen -t shell 0 bash
-screen -t dev 1 bash
-screen -t prod 2 bash
-select 0
+
+screen -t Shell         1   bash
+screen -t Background    2   bash
+screen -t Top           10  htop
+bind c screen 1
+bind 0 select 10
+select 1
+focus
+
+##   Keybindings   ##
+
+# Ctrl + left : prev
+# Ctrl + right : next
+#bindkey "^[O5A" focus up
+#bindkey "^[O5B" focus down
+#bindkey "^[O5D" prev
+#bindkey "^[O5C" next
+#
+#bindkey "^[Oa" focus up
+#bindkey "^[Ob" focus down
+#bindkey "^[Od" prev
+#bindkey "^[Oc" next
+#
+#bindkey "\033[A" focus up
+#bindkey "\033[B" focus down
+#bindkey "\033[D" prev
+#bindkey "\033[C" next
+## putty
+#bindkey "^[[A" focus up
+#bindkey "^[[B" focus down
+#bindkey "^[[D" prev
+#bindkey "^[[C" next
+#
+# gnome-terminal
+bindkey "^[[1;5A" focus up
+bindkey "^[[1;5B" focus down
+bindkey "^[[1;5D" prev
+bindkey "^[[1;5C" next
+
+bind P paste .
+
+bindkey -k k2 focus
+bindkey -k k3 split
+bindkey -k k4 split -v
+bindkey -k k6 resize -1
+bindkey -k k7 resize +1
+bindkey -k k8 remove
+bindkey -k k9 monitor
+
+caption splitonly "%{.c} %n%f %t"
