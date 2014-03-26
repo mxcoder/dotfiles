@@ -63,14 +63,18 @@ haste() { a=$(cat); curl -X POST -s -d "$a" http://hastebin.com/documents | awk 
 
 # Puu.sh client
 puush() { puush-client "$1" | cb; }
+puushscreen() { puush-screenshot $1; }
+export puushscreen
+alias psh="puush"
+alias pshc="puushscreen"
 
 # Sinergy start/stop
-sinergyctl() {
+sinergy-start-restart() {
     SPID=`pidof synergys`
 
     if [[ "off" = "$1" ]]; then
         if [[ ! -z "$SPID" ]]; then
-            kill "$SPID"
+            kill -l "$SPID"
             MSG="Stopped"
         else
             MSG="Not running"
@@ -85,6 +89,7 @@ sinergyctl() {
     fi
     notify-send -u low -i terminal "Sinergy" "$MSG"
 }
+alias sny="sinergy-start-restart"
 
 # Simple calculator
 function calc() {
