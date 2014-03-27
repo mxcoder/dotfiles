@@ -69,27 +69,21 @@ alias psh="puush"
 alias pshc="puushscreen"
 
 # Sinergy start/stop
-sinergy-start-restart() {
-    SPID=`pidof synergys`
-
-    if [[ "off" = "$1" ]]; then
-        if [[ ! -z "$SPID" ]]; then
-            kill -l "$SPID"
-            MSG="Stopped"
-        else
-            MSG="Not running"
-        fi
-    else
+sinergy-control() {
+    local msg=""
+    local spid=`pidof synergys`
+    if ([ -z "$1" ] && [ ! -z "$spid" ]) || [ "off" = "$1" ]; then
+        killall synergys
+        msg="Stopped"
+    elif ([ -z "$1" ] && [ -z "$spid" ]) || [ "on" = "$1" ]; then
         synergys --daemon --restart
-        if [[ -z "$SPID" ]]; then
-            MSG="Started"
-        else
-            MSG="Restarted"
-        fi
+        msg="Restarted"
     fi
-    notify-send -u low -i terminal "Sinergy" "$MSG"
+    if [ ! -z "$msg" ]; then
+        notify-send -i terminal "Sinergy" "$msg"
+    fi
 }
-alias sny="sinergy-start-restart"
+alias sny="sinergy-control"
 
 # Simple calculator
 function calc() {
