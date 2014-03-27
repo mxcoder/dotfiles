@@ -3,8 +3,10 @@
 # Creates symlinks for .dotfiles in $HOME
 for file in $DOTFILES/.conf/*; do
     current="$HOME/."`basename $file`
-    [ -f "$current" ] && [ ! -L "$current" ] && mv "$current" "$current.backup"
-    [ -r "$file" ] && [ -f "$file" ] && [ ! -L "$current" ] && ln -s "$file" "$current"
+    if [ ! -L "$current" ]; then
+        [ -f "$current" ] && mv "$current" "$current.backup"
+        [ -e "$file" ] && ln -s "$file" "$current"
+    fi
 done
 unset current
 unset file
