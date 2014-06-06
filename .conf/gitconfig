@@ -9,6 +9,7 @@
     st = status -sb
     br = branch
     df = diff --color -w
+    dh = diff --no-color --exit-code
     al = add .
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
@@ -34,3 +35,5 @@
     added = yellow
     changed = green
     untracked = cyan
+[user]
+	name = Ricardo Vega

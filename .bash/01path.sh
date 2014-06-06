@@ -5,7 +5,8 @@ WORKHOME=$HOME/Work
 export PATH="$WORKHOME:$PATH"
 
 # NPM / Node
-export PATH="$HOME/.npm/bin:$PATH"
+export NODEBIN="$HOME/.npm/bin"
+export PATH="$NODEBIN:$PATH"
 
 # Java
 JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre
