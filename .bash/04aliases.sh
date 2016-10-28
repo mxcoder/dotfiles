@@ -26,6 +26,7 @@ alias dt="cd ~/Desktop"
 alias cdd="cd $DOTFILES"
 alias cdw="cd $WORKHOME"
 alias g="git"
+alias gti="git"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '

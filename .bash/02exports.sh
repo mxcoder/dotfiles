@@ -20,4 +20,4 @@ export LESS_TERMCAP_md="$ORANGE"
 export MANPAGER="less -X"
 
 # Always enable colored `grep` output
-export GREP_OPTIONS="--color=auto"
+#export GREP_OPTIONS="--color=auto"

@@ -12,7 +12,7 @@ for file in $DOTFILES/.bash/*; do
 done
 unset file
 
-
+# Link bins
 for file in $DOTFILES/bin/*; do
     name=`basename $file`
     [ ! -L "$HOME/bin/$name" ] && ln -s $file "$HOME/bin/$name"

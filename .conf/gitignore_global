@@ -22,8 +22,12 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
+
+# Binary files #
+################
+*.psd
+*.fla
  
 # OS generated files #
 ######################
@@ -34,7 +38,10 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.html~
+*.sublime-*
 
 # Own environment #
 ##################
 .local
+.agignore

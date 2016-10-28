@@ -131,13 +131,20 @@ function dataurl() {
     echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
 
-# Start a PHP server from a directory, optionally specifying the port
+# Start a python http server from current directory, optionally specifying the port
+# (Requires Python 3)
+function miniserver() {
+    local port="${1:-8080}"
+    python3 -m http.server $port
+    sleep 1 && open "http://127.0.0.1:${port}/" &
+}
+
+# Start a PHP server from current directory, optionally specifying the port
 # (Requires PHP 5.4.0+.)
 function phpserver() {
     local port="${1:-4000}"
-    local ip=$(ipconfig getifaddr en1)
-    sleep 1 && open "http://${ip}:${port}/" &
-    php -S "${ip}:${port}"
+    php -S "127.0.0.1:${port}" -t .
+    sleep 1 && open "http://127.0.0.1:${port}/" &
 }
 
 # Decode \x{ABCD}-style Unicode escape sequences
@@ -182,4 +189,11 @@ function s() {
 # small enough for one screen.
 function tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
+}
+
+
+function brightness() {
+    local bv="${1:-0.8}"
+    xrandr --output LVDS1 --brightness $bv
+    xrandr --output HDMI1 --brightness $bv
 }

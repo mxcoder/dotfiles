@@ -9,16 +9,20 @@
     st = status -sb
     br = branch
     df = diff --color -w
+    dfs = diff --color -w --staged
     dh = diff --no-color --exit-code
+    dsf = "!git diff --color $@ | diff-so-fancy"
     al = add .
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
+    edit = !subl $(git status --short | awk '$1 ~ /^M|A|U|\\?/ {print $2}' )
 
 [merge]
     log = true
+	tool = meld
 
 [push]
-    default = simple
+    default = current
 
 [color]
     ui = auto
@@ -37,3 +41,6 @@
     untracked = cyan
 [user]
 	name = Ricardo Vega
+	email = ricardo@gumgum.com
+[diff]
+	tool = meld
