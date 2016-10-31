@@ -6,8 +6,6 @@ ack-grep
 automake
 autotools-dev
 build-essential
-caja-dropbox
-caja-wallpaper
 curl
 docker-engine
 dropbox
@@ -60,6 +58,12 @@ xclip
 zoom
 
 ## Utilities
+
+### Sublime Text
+
+http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
+
+https://packagecontrol.io/installation
 
 ### Platinium Searcher
 

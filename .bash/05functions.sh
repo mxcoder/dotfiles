@@ -156,13 +156,6 @@ function unidecode() {
     fi
 }
 
-# Install Grunt plugins and add them as `devDependencies` to `package.json`
-# Usage: `gi contrib-watch contrib-uglify zopfli`
-function gi() {
-    local IFS=,
-    eval npm install --save-dev grunt-{"$*"}
-}
-
 # `o` with no arguments opens current directory, otherwise opens the given
 # location
 function o() {

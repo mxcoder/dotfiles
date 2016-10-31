@@ -19,7 +19,7 @@
 
 [merge]
     log = true
-	tool = meld
+    tool = meld
 
 [push]
     default = current
@@ -40,7 +40,7 @@
     changed = green
     untracked = cyan
 [user]
-	name = Ricardo Vega
-	email = ricardo@gumgum.com
+    name = Ricardo Vega
+    email = ricardo@gumgum.com
 [diff]
-	tool = meld
+    tool = meld
