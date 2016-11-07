@@ -53,3 +53,4 @@ done
 alias nginx-restart='sudo service nginx restart'
 alias hosts='sudo editor /etc/hosts'
 alias notify='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias topsizes="find . -iwholename '*\.git\/*' -prune -o -type f -printf '%s %p\n' | numfmt --to=iec-i | sort -hr | head -n10"
