@@ -3,6 +3,7 @@
 # Environment
 export env=dev
 export ENV=dev
+export WORKHOME=$HOME/Work
 
 # Make nano the default editor - that's how I roll, deal with it.
 export EDITOR="nano"

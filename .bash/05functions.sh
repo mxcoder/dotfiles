@@ -1,5 +1,42 @@
 ## Common functions
 
+# eXecute Silently (no errors shown)
+xs() {
+    eval "$1" 2> /dev/null;
+}
+
+# Tries to open any file according to system settings
+open() {
+    local file=${@:-"."}
+    echo opening $file
+    file $file
+    if type gnome-open > /dev/null 2>&1; then
+        xs "gnome-open $file"
+    elif type xdg-open > /dev/null 2>&1; then
+        xs "xdg-open $file"
+    fi
+}
+
+# Create a new directory and enter it
+mkd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Determine size of a file or total size of a directory
+fs() {
+    if du -b /dev/null > /dev/null 2>&1; then
+        local arg=-sbh
+    else
+        local arg=-sh
+    fi
+    if [[ -n "$@" ]]; then
+        du $arg -- "$@" | sort -rh
+    else
+        du $arg .[^.]* * | sort -rh
+    fi
+}
+
+# Visual editor
 veditor() {
     if type subl > /dev/null 2>&1; then
         subl $1 &
@@ -101,25 +138,6 @@ function calc() {
         printf "$result"
     fi
     printf "\n"
-}
-
-# Create a new directory and enter it
-function mkd() {
-    mkdir -p "$@" && cd "$@"
-}
-
-# Determine size of a file or total size of a directory
-function fs() {
-    if du -b /dev/null > /dev/null 2>&1; then
-        local arg=-sbh
-    else
-        local arg=-sh
-    fi
-    if [[ -n "$@" ]]; then
-        du $arg -- "$@"
-    else
-        du $arg .[^.]* *
-    fi
 }
 
 # Create a data URL from a file

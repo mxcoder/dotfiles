@@ -24,7 +24,7 @@
 set autoindent
 
 ## Back up files to the current filename plus a tilde.
-# set backup
+unset backup
 
 ## The directory to put unique backup files in.
 # set backupdir ""
@@ -66,7 +66,7 @@ set historylog
 ## Enable vim-style lock-files.  This is just to let a vim user know you
 ## are editing a file [s]he is trying to edit and vice versa. There are
 ## no plans to implement vim-style undo state in these files.
-set locking
+unset locking
 
 ## The opening and closing brackets that can be found by bracket
 ## searches.  They cannot contain blank characters.  The former set must
@@ -80,7 +80,7 @@ set matchbrackets "(<[{)>]}"
 ## mouse clicks can be used to place the cursor, set the mark (with a
 ## double click), and execute shortcuts.  The mouse will work in the X
 ## Window System, and on the console when gpm is running.
-set mouse
+# set mouse
 
 ## Switch on multiple file buffers (inserting a file will put it into
 ## a separate buffer).
@@ -90,7 +90,7 @@ set mouse
 # set noconvert
 
 ## Don't display the helpful shortcut lists at the bottom of the screen.
-# set nohelp
+set nohelp
 
 ## Don't add newlines to the ends of files.
 # set nonewlines

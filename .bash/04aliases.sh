@@ -50,6 +50,6 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 
-alias nginx-restart='sudo /etc/init.d/nginx restart'
+alias nginx-restart='sudo service nginx restart'
 alias hosts='sudo editor /etc/hosts'
 alias notify='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
