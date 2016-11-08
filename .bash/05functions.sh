@@ -205,6 +205,7 @@ function tre() {
 
 function brightness() {
     local bv="${1:-0.8}"
-    xrandr --output LVDS1 --brightness $bv
-    xrandr --output HDMI1 --brightness $bv
+    for MON in `xrandr | grep ' connected' | cut -f1 -d' '`; do
+        xrandr --output $MON --brightness $bv
+    done
 }
