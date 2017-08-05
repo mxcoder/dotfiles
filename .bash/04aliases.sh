@@ -39,8 +39,8 @@ alias lip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias whois="whois -h whois-servers.net"
 
 # View HTTP traffic
-alias sniff="sudo ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i wlan0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias sniff="sudo ngrep -d $(ifconfig -a | grep RUNNING | grep -v 'tun0\|lo' | cut -d':' -f1) -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i $(ifconfig -a | grep RUNNING | grep -v 'tun0\|lo' | cut -d':' -f1) -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
@@ -54,3 +54,14 @@ alias nginx-restart='sudo service nginx restart'
 alias hosts='sudo editor /etc/hosts'
 alias notify='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias topsizes="find . -iwholename '*\.git\/*' -prune -o -type f -printf '%s %p\n' | numfmt --to=iec-i | sort -hr | head -n10"
+
+## Docker
+
+# Kill all running containers.
+alias dockerkillall='docker kill $(docker ps -q)'
+# Delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+# Delete all untagged images.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+# Delete all stopped containers and untagged images.
+alias dockerclean='dockercleanc || true && dockercleani'

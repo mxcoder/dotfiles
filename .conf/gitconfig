@@ -13,9 +13,15 @@
     dh = diff --no-color --exit-code
     dsf = "!git diff --color $@ | diff-so-fancy"
     al = add .
+    push = push -u
+    prull = pull --prune
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
     edit = !subl $(git status --short | awk '$1 ~ /^M|A|U|\\?/ {print $2}' )
+    top = log --oneline --graph --decorate @{u}..
+    fromo = "!git fetch && git reset @{u} --hard"
+    rebos = "!git fetch && git rebase origin/stage"
+    rebclean = "!git fetch && git rebase origin/stage --ignore-whitespace -s recursive -X theirs"
 
 [merge]
     log = true

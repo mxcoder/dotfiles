@@ -39,9 +39,11 @@
 ehthumbs.db
 Thumbs.db
 *.html~
-*.sublime-*
+*.sublime*
+*.vim
 
 # Own environment #
 ##################
 .local
 .agignore
+.idea

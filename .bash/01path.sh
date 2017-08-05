@@ -1,8 +1,8 @@
 ## Path related exports
 
 # Composer
-if [ -d "$HOME/.composer/vendor/bin" ] ; then
-    PATH="$HOME/.composer/vendor/bin:$PATH"
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+    PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
 # NPM / Node

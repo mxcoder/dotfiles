@@ -2,9 +2,7 @@
     "license": "proprietary",
     "require": {
         "squizlabs/php_codesniffer": "^2.3",
-        "fabpot/php-cs-fixer": "^1.9",
         "phpmd/phpmd": "^2.2",
-        "phpunit/phpunit": "^5.3",
-        "pantheon-systems/terminus": "^0.11.2"
+        "phpunit/phpunit": "^5.3"
     }
 }
