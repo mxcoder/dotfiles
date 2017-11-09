@@ -209,3 +209,12 @@ function brightness() {
         xrandr --output $MON --brightness $bv
     done
 }
+
+function dupes() {
+    if [ $# -eq 0 ]; then
+        local PT="./"
+    else
+        local PT="$@"
+    fi
+    find "$PT" -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate
+}

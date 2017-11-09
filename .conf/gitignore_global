@@ -41,6 +41,7 @@ Thumbs.db
 *.html~
 *.sublime*
 *.vim
+.vscode
 
 # Own environment #
 ##################
