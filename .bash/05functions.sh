@@ -154,7 +154,7 @@ function dataurl() {
 function miniserver() {
     local port="${1:-8080}"
     python3 -m http.server $port
-    sleep 1 && open "http://127.0.0.1:${port}/" &
+    open "http://127.0.0.1:${port}/"
 }
 
 # Start a PHP server from current directory, optionally specifying the port
