@@ -1,5 +1,0 @@
-#!/bin/bash
-
-LAST_IMAGE="/tmp/screenshot.jpg"
-gnome-screenshot $1 -f $LAST_IMAGE 2> /dev/null
-puush-client $LAST_IMAGE | cb

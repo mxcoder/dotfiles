@@ -17,6 +17,7 @@ alias lsd="ls -lF --color=auto | grep --color=never '^d'"
 alias ls="command ls --color=auto"
 
 # Shortcuts
+alias cls='printf "\033c"'
 alias e="editor"
 alias ve="veditor"
 alias z="screen -dRR"
@@ -57,6 +58,8 @@ alias topsizes="find . -iwholename '*\.git\/*' -prune -o -type f -printf '%s %p\
 
 ## Docker
 
+# Shows images by size
+alias dockerim='docker images --format "{{.Size}}\t{{.Repository}}\t{{.Tag}}\t{{.ID}}" | sed "s/ //" | sort -h -r | column -t'
 # Kill all running containers.
 alias dockerkillall='docker kill $(docker ps -q)'
 # Delete all stopped containers.
