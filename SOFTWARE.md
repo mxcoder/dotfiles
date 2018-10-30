@@ -9,7 +9,6 @@ build-essential
 curl
 docker-engine
 dropbox
-emma
 ffmpeg
 g++
 gimp
@@ -27,16 +26,7 @@ make
 meld
 memcached
 mtr
-mysql-client
-network-manager-openvpn
 nmap
-openvpn
-php5-cli
-php5-curl
-php5-mcrypt
-php5-mysql
-php5-pgsql
-php5-sqlite
 recordmydesktop
 s3cmd
 shutter
