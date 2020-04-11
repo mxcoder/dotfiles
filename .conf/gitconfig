@@ -50,7 +50,7 @@
     untracked = cyan
 [user]
     name = Ricardo Vega
-    email = ricardo@gumgum.com
+    email = ricardoe@gmail.com
 [diff]
     tool = meld
 [filter "lfs"]
@@ -58,3 +58,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[includeIf "gitdir:~/Work/gumgum/"]
+  path = ~/Work/gumgum/.gitconfig
