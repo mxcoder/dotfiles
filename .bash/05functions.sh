@@ -36,16 +36,6 @@ fs() {
     fi
 }
 
-# Visual editor
-veditor() {
-    if type subl > /dev/null 2>&1; then
-        subl $1 &
-    else
-        gedit $1 &
-    fi
-}
-export -f veditor
-
 # To system-wide clipboard
 # http://madebynathan.com/2011/10/04/a-nicer-way-to-use-xclip/
 # # A shortcut function that simplifies usage of xclip.
@@ -98,13 +88,6 @@ alias cbhs="cat $HISTFILE | tail -n 1 | cb"
 # https://github.com/seejohnrun/haste-client
 haste() { a=$(cat); curl -X POST -s -d "$a" http://hastebin.com/documents | awk -F '"' '{print "http://hastebin.com/"$4}'; }
 
-# Puu.sh client
-puush() { puush-client "$1" | cb; }
-puushscreen() { puush-screenshot $1; }
-export puushscreen
-alias psh="puush"
-alias pshc="puushscreen"
-
 # Sinergy start/stop
 sinergy-control() {
     local msg=""
@@ -155,23 +138,6 @@ function miniserver() {
     local port="${1:-8080}"
     python3 -m http.server $port
     open "http://127.0.0.1:${port}/"
-}
-
-# Start a PHP server from current directory, optionally specifying the port
-# (Requires PHP 5.4.0+.)
-function phpserver() {
-    local port="${1:-4000}"
-    php -S "127.0.0.1:${port}" -t .
-    sleep 1 && open "http://127.0.0.1:${port}/" &
-}
-
-# Decode \x{ABCD}-style Unicode escape sequences
-function unidecode() {
-    perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
-    # print a newline unless we’re piping the output to another program
-    if [ -t 1 ]; then
-        echo # newline
-    fi
 }
 
 # `o` with no arguments opens current directory, otherwise opens the given

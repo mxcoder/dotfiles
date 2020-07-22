@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## Main entry bash
 ## Most of this was pirated from https://github.com/mathiasbynens/dotfiles
 
@@ -5,16 +7,7 @@
 export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
 for file in $DOTFILES/.bash/*; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
-
-# Link bins
-for file in $DOTFILES/bin/*; do
-    name=`basename $file`
-    [ ! -L "$HOME/bin/$name" ] && ln -s $file "$HOME/bin/$name"
-done
-unset file name

@@ -7,8 +7,6 @@ automake
 autotools-dev
 build-essential
 curl
-docker-engine
-dropbox
 ffmpeg
 g++
 gimp
@@ -17,22 +15,16 @@ git-flow
 gitk
 graphviz
 gsmartcontrol
-hipchat4
 htop
-httrack
 jq
-keepassx
+keepassxc
 make
 meld
-memcached
 mtr
 nmap
 recordmydesktop
-s3cmd
 shutter
 silversearcher-ag
-skype
-smartmontools
 solaar
 spotify-client
 sublime-text-installer
@@ -40,12 +32,7 @@ tmux
 traceroute
 tree
 unrar
-vagrant
-virtualbox
-virtualbox-guest-additions-iso
-virtualbox-guest-utils
 xclip
-zoom
 
 ## Utilities
 
@@ -66,14 +53,6 @@ https://github.com/ggreer/the_silver_searcher
 ### Shutter
 
 http://shutter-project.org/
-
-`
-apt-get install shutter
-`
-
-### SQLWorkbench/J
-
-http://www.sql-workbench.net/downloads.html
 
 ### DBeaver
 

@@ -1,6 +1,7 @@
-My Setup
+Dotfiles
 ========
 
 - Clone
-- Add proper entry file to .profile and/or .bash_rc
+- Add entrypoint to .bash_rc
+- Run `install.sh`
 - Reload

@@ -19,18 +19,12 @@ alias ls="command ls --color=auto"
 # Shortcuts
 alias cls='printf "\033c"'
 alias e="editor"
-alias ve="veditor"
-alias z="screen -dRR"
-alias d="cd ~/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias cdd="cd $DOTFILES"
 alias cdw="cd $WORKHOME"
-alias g="git"
 alias gti="git"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+alias relogin='exec su -l $USER'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -51,7 +45,6 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 
-alias nginx-restart='sudo service nginx restart'
 alias hosts='sudo editor /etc/hosts'
 alias notify='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias topsizes="find . -iwholename '*\.git\/*' -prune -o -type f -printf '%s %p\n' | numfmt --to=iec-i | sort -hr | head -n10"

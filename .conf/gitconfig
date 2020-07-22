@@ -61,3 +61,6 @@
 
 [includeIf "gitdir:~/Work/gumgum/"]
   path = ~/Work/gumgum/.gitconfig
+
+[includeIf "gitdir:/home/rvega/Work/"]
+  path = ~/Work/.gitconfig

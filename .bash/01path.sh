@@ -1,9 +1,8 @@
 ## Path related exports
 
-# Composer
-if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
-    PATH="$HOME/.config/composer/vendor/bin:$PATH"
-fi
+# Basic user bin libraries
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/bin"
 
 # NPM / Node
 if [ -d "$HOME/.npm/bin" ] ; then
@@ -16,3 +15,6 @@ if [ -d "$HOME/.rvm" ]; then
     export RVM_HOME=$HOME/.rvm
     PATH=$PATH:$RVM_HOME/bin # Add RVM to PATH for scripting
 fi
+
+# Add non-versioned `.extra/bin` to the `$PATH`
+[ -d $DOTFILES/.extra/bin ] && export PATH="$DOTFILES/.extra/bin:$PATH"
