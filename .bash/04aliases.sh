@@ -21,6 +21,7 @@ alias cls='printf "\033c"'
 alias e="editor"
 alias cdw="cd $WORKHOME"
 alias gti="git"
+alias gsa="find ./ -maxdepth 2 -name .git -execdir pwd \; -execdir git fetch \; -execdir git st \; -exec echo '-------------' \;"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '

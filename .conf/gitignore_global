@@ -51,3 +51,4 @@ Thumbs.db
 .local
 .idea
 .venv
+.pytest_cache
