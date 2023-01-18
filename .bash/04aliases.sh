@@ -1,4 +1,7 @@
+#!/bin/bash
 ## Aliases
+
+alias rebashrc="source ~/.bashrc"
 
 # Easier navigation
 alias -- -="cd -"
@@ -19,7 +22,7 @@ alias ls="command ls --color=auto"
 # Shortcuts
 alias cls='printf "\033c"'
 alias e="editor"
-alias cdw="cd $WORKHOME"
+alias cdw='cd $WORKHOME'
 alias gti="git"
 alias gsa="find ./ -maxdepth 2 -name .git -execdir pwd \; -execdir git fetch \; -execdir git st \; -exec echo '-------------' \;"
 
@@ -28,22 +31,18 @@ alias sudo='sudo '
 alias relogin='exec su -l $USER'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias lip="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
-
-# View HTTP traffic
-alias sniff="sudo ngrep -d $(ifconfig -a | grep RUNNING | grep -v 'tun0\|lo' | cut -d':' -f1) -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i $(ifconfig -a | grep RUNNING | grep -v 'tun0\|lo' | cut -d':' -f1) -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-    alias "$method"="lwp-request -m '$method'"
+    eval "alias $method='lwp-request -m $method'"
 done
 
 alias hosts='sudo editor /etc/hosts'

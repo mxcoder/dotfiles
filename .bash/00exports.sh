@@ -1,3 +1,4 @@
+#!/bin/bash
 ## Exported options and variables
 
 # Environment
