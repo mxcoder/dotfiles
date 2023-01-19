@@ -1,28 +1,32 @@
+#!/bin/bash
 # Install configuration symlinks
 
 ## Configure options
 CONFS_DIR="$DOTFILES/.conf/";
 
 # Creates symlinks for .dotfiles in $HOME
-for file in `find $CONFS_DIR -type f`; do
-    current="$HOME/${file/$CONFS_DIR/.}";
-    if [ -f "$current" ]; then
-        cp "$current" "$current.bak"
+FILES=$(find "$CONFS_DIR" -type f)
+for FILE in $FILES; do
+    TARGET=$(realpath "$HOME/${FILE/$CONFS_DIR/.}")
+    if [ -f "$TARGET" ]; then
+        cp "$TARGET"{,.bak}
     fi
-    if [ ! -e "$current" ]; then
-        mkdir -p `dirname $current`
-        ln -fs "$file" "$current"
+    if [ ! -e "$TARGET" ]; then
+        mkdir -p "$(dirname "$TARGET")"
+        ln -fs "$FILE" "$TARGET"
     fi
 done
-unset current
-unset file
+unset FILES FILE TARGET
 
 # Install non-versioned bash scripts
 
 ## Link bins
 
-for file in $DOTFILES/bin/*; do
-    name=`basename $file`
-    [ ! -L "$HOME/bin/$name" ] && ln -s $file "$HOME/bin/$name"
+FILES=$(find "$DOTFILES"/bin/ -executable)
+for FILE in $FILES; do
+    NAME=$(basename "$FILE")
+    if [ ! -L "$HOME/bin/$NAME" ]; then
+        ln -s "$FILE" "$HOME/bin/$NAME"
+    fi
 done
-unset file name
+unset FILES FILE NAME
