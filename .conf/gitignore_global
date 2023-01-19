@@ -48,7 +48,9 @@ Thumbs.db
 *.code-workspace
 .vscode
 .env
+.envrc
 .local
 .idea
 .venv
 .pytest_cache
+.python-version

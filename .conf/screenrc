@@ -9,6 +9,9 @@ hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-=%D %m/
 screen -t Shell         1   bash
 screen -t Background    2   bash
 screen -t Top           10  htop
+
+termcapinfo xterm* ti@:te@
+
 bind c screen 1
 bind 0 select 10
 select 1
