@@ -5,13 +5,13 @@
 ack-grep
 automake
 autotools-dev
+bat
 build-essential
 curl
 ffmpeg
 g++
 gimp
 git
-git-flow
 gitk
 graphviz
 gsmartcontrol
@@ -57,3 +57,11 @@ http://shutter-project.org/
 ### DBeaver
 
 http://dbeaver.jkiss.org/
+
+### Starship
+
+https://starship.rs/
+
+### DuckDB
+
+https://duckdb.org/
