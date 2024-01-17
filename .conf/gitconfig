@@ -1,37 +1,43 @@
+[user]
+    name = Ricardo Vega
+    email = ricardoe@gmail.com
+
 [core]
     editor = nano
     excludesfile = ~/.gitignore_global
 
+[push]
+    default = current
+
 [alias]
     co = checkout
-    checkoutr = checkout
-    cor = checkoutr
-    ci = commit
     ca = commit -a
     st = status -sb
     br = branch
+
     df = diff --color -w
     dfs = diff --color -w --staged
-    dh = diff --no-color --exit-code
-    dsf = "!git diff --color $@ | diff-so-fancy"
-    al = add .
-    push = push -u
+    dfx = diff --no-color --exit-code
+    dff = "!GIT_EXTERNAL_DIFF=difft git diff"
+
+    fromo = "!git fetch && git reset @{u} --hard"
     prull = pull --prune
+    push = push -u
+ 
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
-    edit = !subl $(git status --short | awk '$1 ~ /^M|A|U|\\?/ {print $2}' )
     top = log --oneline --graph --decorate @{u}..
-    fromo = "!git fetch && git reset @{u} --hard"
-    rebos = "!git fetch && git rebase origin/stage"
-    rebclean = "!git fetch && git rebase origin/stage --ignore-whitespace -s recursive -X theirs"
-    change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch --env-filter \"if [ \\\"${VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;}; f "
 
 [merge]
     log = true
     tool = meld
 
-[push]
-    default = current
+[diff]
+    prompt = false
+    tool = meld
+
+[pager]
+    difftool = true
 
 [color]
     ui = auto
@@ -48,19 +54,19 @@
     added = yellow
     changed = green
     untracked = cyan
-[user]
-    name = Ricardo Vega
-    email = ricardoe@gmail.com
-[diff]
-    tool = meld
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 
-[includeIf "gitdir:~/Work/gumgum/"]
-  path = ~/Work/gumgum/.gitconfig
-
-[includeIf "gitdir:/home/rvega/Work/"]
+[includeIf "gitdir:~/Personal/"]
+  path = ~/Personal/.gitconfig
+[includeIf "gitdir:~/Work/"]
   path = ~/Work/.gitconfig
+[includeIf "gitdir:~/Other/"]
+  path = ~/Work/.gitconfig
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
