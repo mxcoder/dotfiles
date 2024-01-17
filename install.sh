@@ -8,10 +8,7 @@ CONFS_DIR="$DOTFILES/.conf/";
 FILES=$(find "$CONFS_DIR" -type f)
 for FILE in $FILES; do
     TARGET=$(realpath "$HOME/${FILE/$CONFS_DIR/.}")
-    if [ -f "$TARGET" ]; then
-        cp "$TARGET"{,.bak}
-    fi
-    if [ ! -e "$TARGET" ]; then
+    if [ ! -f "$TARGET" ]; then
         mkdir -p "$(dirname "$TARGET")"
         ln -fs "$FILE" "$TARGET"
     fi
@@ -21,8 +18,8 @@ unset FILES FILE TARGET
 # Install non-versioned bash scripts
 
 ## Link bins
-
-FILES=$(find "$DOTFILES"/bin/ -executable)
+mkdir -p "$HOME/bin"
+FILES=$(find "$DOTFILES/bin/" -type f -executable)
 for FILE in $FILES; do
     NAME=$(basename "$FILE")
     if [ ! -L "$HOME/bin/$NAME" ]; then
