@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
-format = '$username$hostname$localip$shlvl$singularity$directory$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$terraform$aws$gcloud$azure$kubernetes$docker_context$package$c$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$vlang$vagrant$zig$buf$nix_shell$conda$spack$memory_usage$openstack$env_var$crystal$custom$sudo$cmd_duration$line_break$jobs$battery$time$status$container$shell$character'
+format = '$username$hostname$localip$shlvl$singularity$directory$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$terraform$aws$gcloud$azure$kubernetes$docker_context$package$c$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$vlang$vagrant$zig$buf$nix_shell$conda$spack$memory_usage$openstack$env_var$crystal$custom$sudo$cmd_duration$status$line_break$jobs$battery$time$container$shell$character'
 
 [directory]
 truncate_to_repo = false
@@ -161,3 +161,12 @@ format = '\[[$symbol($version)]($style)\]'
 
 [zig]
 format = '\[[$symbol($version)]($style)\]'
+
+[status]
+disabled = false
+style = 'blue'
+success_symbol = '🟢'
+symbol = '🔴'
+sigint_symbol = '⚪'
+format = '\[[$symbol $status]($style)\]'
+map_symbol = true
