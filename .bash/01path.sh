@@ -1,5 +1,6 @@
 #!/bin/bash
 ## Path related exports
+# shellcheck disable=SC1091
 
 # NPM / Node
 if [ -d "$HOME/.npm/bin" ] ; then
@@ -10,8 +11,8 @@ fi
 # NVM
 if [ -d "$HOME/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    [ -s "$NVM_DIR/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && source "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
 fi
 
 # RVM
@@ -20,24 +21,14 @@ if [ -d "$HOME/.rvm" ]; then
     PATH="$RVM_HOME/bin:$PATH" # Add RVM to PATH for scripting
 fi
 
-# PyEnv
-if [ -d "$HOME/.pyenv" ]; then
-    export PYENV_HOME="$HOME/.pyenv"
-    export PATH="$PYENV_HOME/bin:$PATH"
-    eval "$(pyenv init -)"
-    #eval "$(pyenv init --path)"
-    #eval "$(pyenv virtualenv-init -)"
-    export PIPENV_VENV_IN_PROJECT=1
-fi
-
 # Rust
 if [ -d "$HOME/.cargo" ]; then
     export CARGO_HOME="$HOME/.cargo"
-    source "$CARGO_HOME/env"
+    source "${CARGO_HOME}/env"
 fi
 
 # Basic user bin libraries
 export PATH="$HOME/bin:$PATH"
 
 # Add non-versioned `.extra/bin` to the `$PATH`
-[ -d $DOTFILES/.extra/bin ] && export PATH="$DOTFILES/.extra/bin:$PATH"
+[ -d "$DOTFILES/.extra/bin" ] && export PATH="$DOTFILES/.extra/bin:$PATH"

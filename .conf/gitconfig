@@ -5,6 +5,11 @@
 [core]
     editor = nano
     excludesfile = ~/.gitignore_global
+	fsmonitor = false
+	attributesfile = /home/rvega/.gitattributes_global
+
+[pull]
+	rebase = true
 
 [push]
     default = current
@@ -20,10 +25,13 @@
     dfx = diff --no-color --exit-code
     dff = "!GIT_EXTERNAL_DIFF=difft git diff"
 
+    fuck = "!git add . && git commit --amend --no-edit"
+    FFS = "!git fuck && git push -f"
     fromo = "!git fetch && git reset @{u} --hard"
     prull = pull --prune
     push = push -u
- 
+    stashall = stash --all
+
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     latest = for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
     top = log --oneline --graph --decorate @{u}..
@@ -35,6 +43,11 @@
 [diff]
     prompt = false
     tool = meld
+	file-z = file -z
+	filezip = file -z
+
+[diff "filezip"]
+	textconv = file -z
 
 [pager]
     difftool = true

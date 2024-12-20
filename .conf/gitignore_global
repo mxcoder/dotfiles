@@ -53,4 +53,4 @@ Thumbs.db
 .idea
 .venv
 .pytest_cache
-.python-version
+.ruff_cache

@@ -1,0 +1,20 @@
+.prompt 'sql> '
+.echo off
+
+SET memory_limit = '24GB';
+SET temp_directory = '/tmp/duckdb/';
+
+INSTALL httpfs;
+LOAD httpfs;
+
+INSTALL spatial;
+LOAD spatial;
+
+.print "`.open x.db` to open"
+.print "`.rows` for row-rendering"
+.print "`.columns` to revert"
+.print "`.mode XYZ` for output"
+.print "`.once FILE` to save output"
+.print "`.excel` to open with excel"
+
+.timer on

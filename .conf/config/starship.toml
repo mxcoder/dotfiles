@@ -1,11 +1,19 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
-format = '$username$hostname$localip$shlvl$singularity$directory$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$terraform$aws$gcloud$azure$kubernetes$docker_context$package$c$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$vlang$vagrant$zig$buf$nix_shell$conda$spack$memory_usage$openstack$env_var$crystal$custom$sudo$cmd_duration$status$line_break$jobs$battery$time$container$shell$character'
+format = '$username$hostname$localip$shlvl$singularity$directory$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$terraform$aws$gcloud$azure$kubernetes$docker_context$package$c$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$uv$python$rlang$red$ruby$rust$scala$swift$vlang$vagrant$zig$buf$nix_shell$conda$spack$memory_usage$openstack$env_var$crystal$custom$sudo$cmd_duration$status$line_break$jobs$battery$time$container$shell$character'
+command_timeout = 1000
 
 [directory]
 truncate_to_repo = false
 style = 'bold green'
+
+# https://github.com/starship/starship/issues/5954
+[custom.uv]
+detect_files = ['uv.lock']
+command = 'cat .python-version'
+symbol = '🇺  uv '
+style = 'bold bright-red'
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
@@ -51,6 +59,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [gcloud]
 format = '\[[$symbol$active]($style)\]'
+disabled = false
 
 [git_branch]
 format = '\[[$symbol$branch]($style)\]'
@@ -121,7 +130,9 @@ format = '\[[$symbol$stack]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [python]
+pyenv_version_name = true
 format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+detect_folders = [".venv"]
 
 [red]
 format = '\[[$symbol($version)]($style)\]'

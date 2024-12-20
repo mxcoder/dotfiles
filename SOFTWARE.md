@@ -24,7 +24,12 @@ tree
 unrar
 xclip
 
-## Utilities
+## Core utilities
+
+- [mise](https://github.com/jdx/mise)
+- [uv](https://github.com/astral-sh/uv)
+
+## Tools
 
 - [bat](https://github.com/sharkdp/bat)
 - [kaf](https://github.com/birdayz/kaf)
@@ -35,9 +40,13 @@ xclip
 
 ## Snaps
 
-- dbeaver-ce
-- spotify
-- sublime-text
+- [code](https://github.com/microsoft/vscode)
 - [starship](https://starship.rs/)
+- dbeaver-ce
 - slack
 - gimp
+
+## Optional snaps
+
+- spotify
+- sublime-text
