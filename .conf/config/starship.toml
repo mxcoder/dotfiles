@@ -1,18 +1,101 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
-format = '$username$hostname$localip$shlvl$singularity$directory$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$terraform$aws$gcloud$azure$kubernetes$docker_context$package$c$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$haskell$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$uv$python$rlang$red$ruby$rust$scala$swift$vlang$vagrant$zig$buf$nix_shell$conda$spack$memory_usage$openstack$env_var$crystal$custom$sudo$cmd_duration$status$line_break$jobs$battery$time$container$shell$character'
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$terraform\
+$aws\
+$gcloud\
+$azure\
+$kubernetes\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$spack\
+$memory_usage\
+$openstack\
+$env_var\
+$crystal\
+$sudo\
+$cmd_duration\
+$custom\
+$status\
+$line_break\
+$jobs\
+$battery\
+$time\
+$container\
+$shell\
+$character"""
+
 command_timeout = 1000
 
 [directory]
 truncate_to_repo = false
 style = 'bold green'
 
+# https://github.com/starship/starship/pull/5747
+[custom.mise]
+when = ''' test "$MISE_SHELL" == "bash" '''
+command = ''' (mise config get tools | wc -l) '''
+style = 'green bold'
+symbol = '⚡️ mise'
+format = '\[[$symbol $output]($style)\]'
+disabled = false
+
 # https://github.com/starship/starship/issues/5954
 [custom.uv]
-detect_files = ['uv.lock']
-command = 'cat .python-version'
-symbol = '🇺  uv '
+detect_folders = ['.venv']
+command = ''' (test -x .venv/bin/python && .venv/bin/python -V | sed 's/Python //' || (test -f uv.lock && echo 'no-venv')) '''
+symbol = '🐍 uv'
+format = '\[[$symbol $output]($style)\]'
 style = 'bold bright-red'
 
 [aws]
@@ -130,9 +213,8 @@ format = '\[[$symbol$stack]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [python]
-pyenv_version_name = true
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-detect_folders = [".venv"]
+format = '\[[${symbol}(${version})(\($virtualenv\))]($style)\]'
+python_binary = ['.venv/bin/python', 'python', 'python3', 'python2']
 
 [red]
 format = '\[[$symbol($version)]($style)\]'
