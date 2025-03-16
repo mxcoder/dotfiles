@@ -54,3 +54,4 @@ Thumbs.db
 .venv
 .pytest_cache
 .ruff_cache
+.mise.local.toml

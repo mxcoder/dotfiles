@@ -94,3 +94,7 @@ function reset_prompt {
 if [ -n "$(command -v starship)" ]; then
     eval "$(starship init bash)"
 fi
+
+if [ -x "$HOME/.cargo/bin/starship" ]; then
+    eval "$("$HOME"/.cargo/bin/starship init bash)"
+fi

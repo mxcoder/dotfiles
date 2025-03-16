@@ -2,7 +2,7 @@
 ## Exported options and variables
 
 # Environment
-export WORKHOME=$HOME/Work
+export WORKHOME="$HOME/Work"
 
 # Make nano the default editor - that's how I roll, deal with it.
 export EDITOR="nano"

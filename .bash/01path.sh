@@ -2,10 +2,15 @@
 ## Path related exports
 # shellcheck disable=SC1091
 
+# Basic user bin libraries
+if [[ $PATH != *"$HOME/bin"* ]]; then
+    export PATH="$HOME/bin:$PATH"
+fi
+
 # NPM / Node
 if [ -d "$HOME/.npm/bin" ] ; then
-    export NPM_HOME=$HOME/.npm
-    export PATH="$HOME/.npm/bin/:$PATH"
+    export NPM_HOME="$HOME/.npm"
+    export PATH="$NPM_HOME/bin:$PATH"
 fi
 
 # NVM
@@ -21,14 +26,29 @@ if [ -d "$HOME/.rvm" ]; then
     PATH="$RVM_HOME/bin:$PATH" # Add RVM to PATH for scripting
 fi
 
-# Rust
-if [ -d "$HOME/.cargo" ]; then
-    export CARGO_HOME="$HOME/.cargo"
-    source "${CARGO_HOME}/env"
+# Golang
+if [ -n "$GO_HOME" ]; then
+    export GOPATH="$HOME/go"
+    if [[ $PATH != *"$GO_HOME/bin"* ]]; then
+        export PATH="$GO_HOME/bin:$PATH"
+    fi
+    if [[ $PATH != *"$GOPATH/bin"* ]]; then
+        export PATH="$GOPATH/bin:$PATH"
+    fi
 fi
 
-# Basic user bin libraries
-export PATH="$HOME/bin:$PATH"
+# Rust/Cargo
+if [ -d "$HOME/.cargo" ]; then
+    export CARGO_HOME="$HOME/.cargo"
+    if [[ $PATH != *"$CARGO_HOME/bin"* ]]; then
+        export PATH="$CARGO_HOME/bin:$PATH"
+    fi
+fi
+
+# Sdkman
+if [ -d "$HOME/.sdkman" ]; then
+    [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
 
 # Add non-versioned `.extra/bin` to the `$PATH`
 [ -d "$DOTFILES/.extra/bin" ] && export PATH="$DOTFILES/.extra/bin:$PATH"
